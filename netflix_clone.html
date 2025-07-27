@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Netflix India - Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .logo img {
+      width: 150px;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-right select {
+      padding: 6px 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .sign-in {
+      background-color: #e50914;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .hero__section {
+      background: url('backgorund.jpg') no-repeat center center/cover;
+      min-height: 80vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 30px;
+    }
+
+    .hero__section .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero__content h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero__content h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .hero__content p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .email-form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .email-form input {
+      padding: 15px;
+      font-size: 1rem;
+      width: 60%;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .email-form button {
+      padding: 15px 25px;
+      font-size: 1rem;
+      background-color: #e50914;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .reasons__container {
+      padding: 30px 40px 60px;
+      text-align: center;
+    }
+
+    .reasons__heading {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .reasons__cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .reason__card {
+      flex: 1 1 calc(25% - 20px);
+      background: linear-gradient(135deg, #1e1e2f, #121212);
+      padding: 20px;
+      border-radius: 20px;
+      text-align: left;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .reason__card:hover {
+      transform: translateY(-5px);
+    }
+
+    .reason__card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .reason__card p {
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+      color: #ccc;
+    }
+
+    .reason__card img {
+      width: 40px;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .FAQ__list__container {
+      border-top: 8px solid #222;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .FAQ__heading {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .FAQ__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 2rem;
+    }
+
+    .FAQ__accordian {
+      width: 200px;
+      border: 1px solid #303030;
+      border-radius: 6px;
+      background-color: #303030;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .FAQ__title {
+      width: 100%;
+      height: 50px;
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 0.5rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .FAQ__title::after {
+      content: "\f078";
+      font-family: "Font Awesome 5 Pro";
+      font-weight: 900;
+      font-size: 10px;
+      margin-left: 10px;
+    }
+
+    .FAQ__visible {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      background-color: #444;
+      color: #fff;
+      padding: 0 1rem;
+      font-size: 14px;
+      text-align: left;
+      border-radius: 0 0 6px 6px;
+    }
+
+    .FAQ__accordian:hover .FAQ__visible {
+      max-height: 300px;
+      padding: 1rem;
+    }
+
+    .email-section {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .email-section p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .email-form-footer {
+      display: flex;
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .email-input {
+      flex: 1;
+      padding: 16px;
+      font-size: 16px;
+      background-color: #111;
+      border: 1px solid #333;
+      color: #fff;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+
+    .email-button {
+      background-color: #e50914;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      padding: 0 24px;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .email-button:hover {
+      background-color: #f40612;
+    }
+
+    .email-button i {
+      margin-left: 8px;
+    }
+
+    .footer {
+      background-color: #000;
+      color: #999;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .footer a {
+      color: #999;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      padding: 8px 12px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      margin: 5px 0;
+    }
+
+    .language-selector {
+      margin-bottom: 20px;
+    }
+
+    .language-selector select {
+      background: transparent;
+      border: 1px solid #333;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .email-form input {
+        width: 100%;
+      }
+
+      .email-form, .email-form-footer {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .reasons__cards {
+        flex-direction: column;
+      }
+
+      .reason__card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
+    </div>
+    <div class="nav-right">
+      <select>
+        <option>English</option>
+        <option>हिन्दी</option>
+      </select>
+      <button class="sign-in">Sign In</button>
+    </div>
+  </header>
+
+  <section class="hero__section">
+    <div class="overlay"></div>
+    <div class="hero__content">
+      <h1>Unlimited Movies TV,<br>Shows and More.</h1>
+      <h2>Watch anywhere. Cancel anytime.</h2>
+      <p>Ready to watch? Enter your email to create or restart your membership.</p>
+      <form class="email-form" action="welcome.html" method="GET">
+        <input type="email" name="email" placeholder="Email Address" required />
+        <button type="submit">Get Started ></button>
+      </form>
+    </div>
+  </section>
+
+  <section class="reasons__container">
+    <h2 class="reasons__heading">More reasons to join</h2>
+    <div class="reasons__cards">
+      <div class="reason__card">
+        <h3>Enjoy on your TV</h3>
+        <p>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="TV Icon" />
+      </div>
+      <div class="reason__card">
+        <h3>Download your shows to watch offline</h3>
+        <p>Save your favourites easily and always have something to watch.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/189/189792.png" alt="Download Icon" />
+      </div>
+      <div class="reason__card">
+        <h3>Watch everywhere</h3>
+        <p>Stream unlimited movies and TV shows on your phone, tablet, laptop and TV.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/1642/1642713.png" alt="Everywhere Icon" />
+      </div>
+      <div class="reason__card">
+        <h3>Create profiles for kids</h3>
+        <p>Send kids on adventures with their favourite characters in a space made just for them — free with your membership.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/3449/3449944.png" alt="Kids Icon" />
+      </div>
+    </div>
+  </section>
+
+  <section class="FAQ__list__container">
+    <h1 class="FAQ__heading">Frequently Asked Questions</h1>
+    <div class="FAQ__list">
+      <div class="FAQ__accordian">
+        <button class="FAQ__title">What is Netflix?</button>
+        <div class="FAQ__visible">
+          <p>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more.</p>
+        </div>
+      </div>
+      <div class="FAQ__accordian">
+        <button class="FAQ__title">How much does Netflix cost?</button>
+        <div class="FAQ__visible">
+          <p>Plans range from ₹199 to ₹799 a month. No extra costs, no contracts.</p>
+        </div>
+      </div>
+      <div class="FAQ__accordian">
+        <button class="FAQ__title"> Where can I watch? </button>
+        <div class="FAQ__visible">
+          <p>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+        </div>
+      </div>
+      <div class="FAQ__accordian">
+        <button class="FAQ__title"> How do I cancel? </button>
+        <div class="FAQ__visible">12:28 AM 7/13/2025
+          <p>Cancel anytime in just two clicks. No cancellation fees, no commitments.</p>
+        </div>
+      </div>
+      <div class="FAQ__accordian">
+        <button class="FAQ__title"> Is Netflix good for kids? </button>
+        <div class="FAQ__visible">
+          <p>Netflix Kids gives parents control while kids enjoy family-friendly TV shows and films in their own space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="email-section">
+    <p>Ready to watch? Enter your email to create or restart your membership.</p>
+    <form class="email-form-footer" action="welcome.html" method="GET">
+      <input type="email" class="email-input" name="email" placeholder="Email address" required />
+      <button type="submit" class="email-button">
+        Get Started <i class="fas fa-chevron-right"></i>
+      </button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <h4>Questions? Call 000-800-919-1743</h4>
+    <div class="footer-columns">
+       <div>
+        <a href="#">FAQ</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">Privacy</a>
+        <a href="#">Speed Test</a>
+      </div>
+      <div>
+        <a href="#">Help Centre</a>
+        <a href="#">Jobs</a>
+        <a href="#">Cookie Preferences</a>
+        <a href="#">Legal Notices</a>
+      </div>
+      <div>
+        <a href="#">Accoun
+
+t</a>
+        <a href="#">Ways to Watch</a>
+        <a href="#">Corporate Information</a>
+        <a href="#">Only on Netflix</a>
+      </div>
+      <div>
+        <a href="#">Media Centre</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="language-selector">
+      <select>
+        <option>English</option>
+        <option>हिन्दी</option>
+      </select>
+    </div>
+    <p>Netflix India</p>
+  </footer>
+
+</body>
+</html>
